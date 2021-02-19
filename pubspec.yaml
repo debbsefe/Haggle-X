@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.0
   get: ^3.25.4
+  graphql_flutter: ^4.0.1
   sizer: ^1.1.8
 
 dev_dependencies:
@@ -55,7 +56,6 @@ flutter:
     - family: BasisGrotesquePro
       fonts:
         - asset: assets/fonts/BasisGrotesquePro.ttf
-
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -80,7 +80,8 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         Height(5.0.h),
-                        Center(child: Image.asset('assets/images/finger.png'))
+                        Center(
+                            child: Image.asset('assets/images/fingerprint.png'))
                       ]),
                 ),
               ],

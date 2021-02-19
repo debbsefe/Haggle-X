@@ -22,7 +22,7 @@ class FieldValidator {
     return null;
   }
 
-  static String validateText(String value) {
+  static String validateField(String value) {
     if (value.isEmpty) return "Field cannot be empty";
 
     return null;

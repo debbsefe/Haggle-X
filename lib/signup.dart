@@ -72,7 +72,7 @@ class SignUp extends StatelessWidget {
                           style: CustomTheme.labelblack,
                           decoration: blackinputDecoration.copyWith(
                               hintText: 'Create a username'),
-                          validator: FieldValidator.validateText,
+                          validator: FieldValidator.validateField,
                         ),
                         Height(2.0.h),
                         TextFormField(
@@ -107,7 +107,7 @@ class SignUp extends StatelessWidget {
                               ),
                               prefixIconConstraints:
                                   BoxConstraints(maxWidth: 65)),
-                          validator: FieldValidator.validateText,
+                          validator: FieldValidator.validateField,
                         ),
                         Height(2.0.h),
                         TextFormField(
