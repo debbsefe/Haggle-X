@@ -7,6 +7,7 @@ class DashboardScroll extends StatefulWidget {
 }
 
 class _DashboardScrollState extends State<DashboardScroll> {
+  // ignore: unused_field
   int _currentPage = 0;
   final PageController _pageController = PageController(
     initialPage: 0,
@@ -33,6 +34,7 @@ class _DashboardScrollState extends State<DashboardScroll> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
+      height: 25.0.h,
       margin: const EdgeInsets.symmetric(horizontal: 3.5),
       child: PageView.builder(
         scrollDirection: Axis.horizontal,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:haggle_x/ui/otc.dart';
 
 import '../theme.dart';
 import 'dashboard.dart';

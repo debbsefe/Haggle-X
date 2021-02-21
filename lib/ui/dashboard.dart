@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:haggle_x/theme.dart';
+import 'package:haggle_x/ui/receive_money.dart';
 import 'package:haggle_x/widgets/sized_box.dart';
 import 'package:sizer/sizer.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-
 import 'dashboard_scroll.dart';
 
 class Dashboard extends StatefulWidget {
@@ -19,13 +20,15 @@ class _DashboardState extends State<Dashboard> {
     return SafeArea(
       child: Scaffold(
           backgroundColor: Colors.white,
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(flex: 4, child: TopWidget()),
-              Expanded(flex: 3, child: DashboardScroll()),
-              Expanded(flex: 5, child: BottomWidget()),
-            ],
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TopWidget(),
+                DashboardScroll(),
+                BottomWidget(),
+              ],
+            ),
           )),
     );
   }
@@ -107,47 +110,201 @@ class TopWidget extends StatelessWidget {
 class BottomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Height(2.5.h),
-            Text(
-              'Markets',
-              style: CustomTheme.bodyText2,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Height(2.5.h),
+          Text(
+            'Markets',
+            style: CustomTheme.bodyText2,
+          ),
+          Height(2.5.h),
+          DashboardTile(
+            title: 'Haggle (HAG)',
+            subtitle: 'NGN 380',
+            trailing: 'assets/images/chart.png',
+          ),
+          DashboardTile(
+            title: 'Bitcoin (BTC)',
+            subtitle: 'NGN 4,272,147.00',
+            subtitle2: '+2.34%',
+            trailing: 'assets/images/chart1.png',
+          ),
+          DashboardTile(
+            title: 'Ethereum (ETH)',
+            subtitle: 'NGN 4,272,147.00',
+            subtitle2: '+2.34%',
+            trailing: 'assets/images/chart2.png',
+          ),
+          DashboardTile(
+            title: 'Tether (USDT)',
+            subtitle: 'NGN 4,272,147.00',
+            trailing: 'assets/images/chart.png',
+          ),
+          DashboardTile(
+            title: 'Bitcoin Cash (BCH)',
+            subtitle: 'NGN 4,272,147.00',
+            subtitle2: '+2.34%',
+            trailing: 'assets/images/chart1.png',
+          ),
+          DashboardTile(
+            title: 'Dash (DASH)',
+            subtitle: 'NGN 4,272,147.00',
+            subtitle2: '+2.34%',
+            trailing: 'assets/images/chart2.png',
+          ),
+          DashboardTile(
+            title: 'Dodgecoin (DOGE)',
+            subtitle: 'NGN 4,272,147.00',
+            trailing: 'assets/images/chart.png',
+          ),
+          DashboardTile(
+            title: 'Litecoin (LTC)',
+            subtitle: 'NGN 4,272,147.00',
+            subtitle2: '+2.34%',
+            trailing: 'assets/images/chart1.png',
+          ),
+          Text(
+            'Do more with HaggleX',
+            style: CustomTheme.bodyText2,
+          ),
+          Height(2.5.h),
+          CustomListTile(
+            title: 'Send money instantly',
+            subtitle: 'Send crypto to another wallet',
+            leading: 'assets/images/send.png',
+          ),
+          GestureDetector(
+            onTap: () {
+              Get.to(() => ReceiveMoney());
+            },
+            child: CustomListTile(
+              title: 'Receive money from anyone',
+              subtitle: 'Receive crypto from another wallet',
+              leading: 'assets/images/receive.png',
             ),
-            Height(2.5.h),
-            DashboardTile(
-              title: 'Haggle (HAG)',
-              subtitle: 'NGN 380',
-              trailing: 'assets/images/chart.png',
+          ),
+          CustomListTile(
+            title: 'Virtual Card',
+            subtitle: 'Make faster payments using HaggleX cards',
+            leading: 'assets/images/card.png',
+          ),
+          CustomListTile(
+            title: 'Global Remittance',
+            subtitle: 'Send money to anyone, anywhere',
+            leading: 'assets/images/global.png',
+          ),
+          Height(5.0.h),
+          Text(
+            'Trending crypto news',
+            style: CustomTheme.bodyText2,
+          ),
+          Height(2.5.h),
+          TrendingNews(),
+          TrendingNews(),
+          TrendingNews(),
+          TrendingNews(),
+          TrendingNews(),
+          Divider(),
+          ListTile(
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                'View all stories',
+                style: CustomTheme.bodyText4,
+              ),
+              trailing: Icon(
+                Icons.keyboard_arrow_right,
+                color: Colors.black,
+              )),
+          Divider(),
+        ],
+      ),
+    );
+  }
+}
+
+class TrendingNews extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(bottom: 25),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'assets/images/bitcoin.jpg',
+              ),
             ),
-            DashboardTile(
-              title: 'Bitcoin (BTC)',
-              subtitle: 'NGN 4,272,147.00',
-              subtitle2: '+2.34%',
-              trailing: 'assets/images/chart1.png',
+          ),
+          Width(4.0.h),
+          Expanded(
+            flex: 5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  "Blockchain Bites: BTC on Ethereum, DeFi’s latest stablecoin, the currency cold wars",
+                  style: CustomTheme.bodyText4,
+                ),
+                Height(1.0.h),
+                Row(
+                  children: [
+                    Text('6hrs ago',
+                        style: CustomTheme.subtitlelight
+                            .copyWith(color: CustomTheme.grey600)),
+                    Width(4.0.h),
+                    RichText(
+                      text: TextSpan(
+                          text: 'Category: ',
+                          style: CustomTheme.subtitlelight
+                              .copyWith(color: CustomTheme.grey600),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'DeFi',
+                              style: CustomTheme.subtitlelight,
+                            )
+                          ]),
+                    ),
+                  ],
+                )
+              ],
             ),
-            DashboardTile(
-              title: 'Ethereum (ETH)',
-              subtitle: 'NGN 4,272,147.00',
-              subtitle2: '+2.34%',
-              trailing: 'assets/images/chart2.png',
-            ),
-            DashboardTile(
-              title: 'Tether (USDT)',
-              subtitle: 'NGN 4,272,147.00',
-              trailing: 'assets/images/chart.png',
-            ),
-            DashboardTile(
-              title: 'Bitcoin Cash (BCH)',
-              subtitle: 'NGN 4,272,147.00',
-              subtitle2: '+2.34%',
-              trailing: 'assets/images/chart1.png',
-            ),
-          ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class CustomListTile extends StatelessWidget {
+  final String leading, subtitle, title;
+
+  const CustomListTile({Key key, this.leading, this.subtitle, this.title})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Card(
+        shadowColor: CustomTheme.grey,
+        elevation: 1.5,
+        child: ListTile(
+          title: Text(
+            title,
+            style: CustomTheme.bodyText3,
+          ),
+          subtitle: Text(
+            subtitle,
+            style: CustomTheme.subtitlelight,
+          ),
+          leading: Image.asset(leading),
         ),
       ),
     );
