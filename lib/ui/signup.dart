@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:haggle_x/services/main_service.dart';
-import 'package:haggle_x/ui/dashboard.dart';
 import 'package:haggle_x/widgets/appbar.dart';
 import 'package:haggle_x/theme.dart';
 import 'package:haggle_x/utils/field_validator.dart';
@@ -11,6 +10,8 @@ import 'package:haggle_x/widgets/sized_box.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
+
+import 'dashboard_tab.dart';
 
 class SignUp extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -145,7 +146,7 @@ class SignUp extends StatelessWidget {
                                   password: _password.text,
                                   referralCode: _referralcode.text);
                               if (result['success']) {
-                                Get.to(() => Dashboard());
+                                Get.to(() => DashboardTab());
                               } else {
                                 dialogBox(_provider.error, context);
                               }

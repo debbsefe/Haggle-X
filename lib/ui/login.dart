@@ -10,8 +10,7 @@ import 'package:haggle_x/widgets/sized_box.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
-
-import 'dashboard.dart';
+import 'dashboard_tab.dart';
 
 class Login extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -83,7 +82,7 @@ class Login extends StatelessWidget {
                                 password: _password.text,
                               );
                               if (result['success']) {
-                                Get.to(() => Dashboard());
+                                Get.to(() => DashboardTab());
                               } else {
                                 dialogBox(_provider.error, context);
                               }
