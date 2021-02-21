@@ -48,5 +48,41 @@ void main() {
         expect(result, null);
       });
     });
+
+    group('Test validatePhoneNumber method', () {
+      test('Test for empty number', () {
+        var result = FieldValidator.validatePhoneNumber('');
+        expect(result, 'Field cannot be empty');
+      });
+      test('Test if alphabet is entered', () {
+        var result = FieldValidator.validatePhoneNumber('aaaaaaaaaaa');
+        expect(result, 'Field contains non-numbers');
+      });
+
+      test('Test if alphabet and number is entered', () {
+        var result = FieldValidator.validatePhoneNumber('0814d5d5488');
+        expect(result, 'Field contains non-numbers');
+      });
+
+      test('Test if special character is entered', () {
+        var result = FieldValidator.validatePhoneNumber("0814*525488");
+        expect(result, 'Field contains non-numbers');
+      });
+
+      test('Test if less than 11 numbers is entered', () {
+        var result = FieldValidator.validatePhoneNumber("0814752548");
+        expect(result, 'Enter a valid Phone Number(11 digits only allowed)');
+      });
+
+      test('Test if less than 11 numbers is entered', () {
+        var result = FieldValidator.validatePhoneNumber("081475254888");
+        expect(result, 'Enter a valid Phone Number(11 digits only allowed)');
+      });
+
+      test('Test if number entered', () {
+        var result = FieldValidator.validatePhoneNumber("08147525488");
+        expect(result, null);
+      });
+    });
   });
 }

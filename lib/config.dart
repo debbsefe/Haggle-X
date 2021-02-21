@@ -15,7 +15,6 @@ class GraphQLConfiguration {
   static final Link link = authLink.concat(httpLink);
 
   GraphQLClient clientToQuery({authToken}) {
-    initHiveForFlutter();
     var authHeader =
         authToken == null || authToken == '' ? '' : 'Bearer $authToken';
     final AuthLink clientAuthLink =

@@ -24,8 +24,10 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
+  flutter_secure_storage: ^3.3.5
   get: ^3.25.4
   graphql_flutter: ^4.0.1
+  provider: ^4.3.3
   sizer: ^1.1.8
 
 dev_dependencies:

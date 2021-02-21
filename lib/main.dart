@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:haggle_x/services/main_service.dart';
 import 'package:haggle_x/theme.dart';
+import 'package:haggle_x/ui/login.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-import 'login.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => MainAppProvider(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

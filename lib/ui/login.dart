@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:haggle_x/signup.dart';
+import 'package:haggle_x/services/main_service.dart';
 import 'package:haggle_x/theme.dart';
+import 'package:haggle_x/ui/signup.dart';
 import 'package:haggle_x/utils/field_validator.dart';
 import 'package:haggle_x/widgets/buttons.dart';
+import 'package:haggle_x/widgets/dialogs.dart';
+import 'package:haggle_x/widgets/input_decoration.dart';
 import 'package:haggle_x/widgets/sized_box.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
-import 'widgets/input_decoration.dart';
+
+import 'dashboard.dart';
 
 class Login extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -44,6 +49,7 @@ class Login extends StatelessWidget {
                         Height(2.0.h),
                         TextFormField(
                           keyboardType: TextInputType.text,
+                          obscureText: true,
                           controller: _password,
                           style: CustomTheme.label,
                           decoration: inputDecoration.copyWith(
@@ -66,7 +72,22 @@ class Login extends StatelessWidget {
                         CustomButton(
                           buttonName: 'Log in'.toUpperCase(),
                           onPressed: () async {
-                            if (_formKey.currentState.validate()) {}
+                            if (_formKey.currentState.validate()) {
+                              showLoader(context);
+                              final _provider = Provider.of<MainAppProvider>(
+                                  context,
+                                  listen: false);
+
+                              var result = await _provider.signin(
+                                email: _email.text,
+                                password: _password.text,
+                              );
+                              if (result['success']) {
+                                Get.to(() => Dashboard());
+                              } else {
+                                dialogBox(_provider.error, context);
+                              }
+                            }
                           },
                         ),
                         Height(3.0.h),

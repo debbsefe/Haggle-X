@@ -27,4 +27,14 @@ class FieldValidator {
 
     return null;
   }
+
+  static String validatePhoneNumber(String value) {
+    if (value.isEmpty)
+      return 'Field cannot be empty';
+    else if (value.length < 11 || value.length > 11) {
+      return "Enter a valid Phone Number(11 digits only allowed)";
+    } else if (num.tryParse(value) == null) return 'Field contains non-numbers';
+
+    return null;
+  }
 }

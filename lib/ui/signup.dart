@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:haggle_x/services/main_service.dart';
+import 'package:haggle_x/ui/dashboard.dart';
 import 'package:haggle_x/widgets/appbar.dart';
 import 'package:haggle_x/theme.dart';
 import 'package:haggle_x/utils/field_validator.dart';
 import 'package:haggle_x/widgets/buttons.dart';
+import 'package:haggle_x/widgets/dialogs.dart';
+import 'package:haggle_x/widgets/input_decoration.dart';
 import 'package:haggle_x/widgets/sized_box.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
-import 'widgets/input_decoration.dart';
 
 class SignUp extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -15,7 +19,6 @@ class SignUp extends StatelessWidget {
   final TextEditingController _username = TextEditingController();
   final TextEditingController _referralcode = TextEditingController();
   final TextEditingController _phone = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,6 +63,7 @@ class SignUp extends StatelessWidget {
                         TextFormField(
                           keyboardType: TextInputType.text,
                           controller: _password,
+                          obscureText: true,
                           style: CustomTheme.labelblack,
                           decoration: blackinputDecoration.copyWith(
                               hintText: 'Password (Min. 8 characters)'),
@@ -80,7 +84,7 @@ class SignUp extends StatelessWidget {
                           controller: _phone,
                           style: CustomTheme.labelblack,
                           decoration: blackinputDecoration.copyWith(
-                              hintText: 'Enter your phone number',
+                              hintText: 'Enter your phone number (081xxxxxxxx)',
                               prefixIcon: Container(
                                 decoration: BoxDecoration(
                                   color: CustomTheme.notwhite,
@@ -107,7 +111,7 @@ class SignUp extends StatelessWidget {
                               ),
                               prefixIconConstraints:
                                   BoxConstraints(maxWidth: 65)),
-                          validator: FieldValidator.validateField,
+                          validator: FieldValidator.validatePhoneNumber,
                         ),
                         Height(2.0.h),
                         TextFormField(
@@ -128,7 +132,24 @@ class SignUp extends StatelessWidget {
                           color2: CustomTheme.purple50,
                           buttonName: 'Log in'.toUpperCase(),
                           onPressed: () async {
-                            if (_formKey.currentState.validate()) {}
+                            if (_formKey.currentState.validate()) {
+                              showLoader(context);
+                              final _provider = Provider.of<MainAppProvider>(
+                                  context,
+                                  listen: false);
+
+                              var result = await _provider.register(
+                                  email: _email.text,
+                                  phonenumber: _phone.text,
+                                  username: _username.text,
+                                  password: _password.text,
+                                  referralCode: _referralcode.text);
+                              if (result['success']) {
+                                Get.to(() => Dashboard());
+                              } else {
+                                dialogBox(_provider.error, context);
+                              }
+                            }
                           },
                         ),
                         Height(3.0.h),
