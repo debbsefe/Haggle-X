@@ -54,14 +54,11 @@ class TopWidget extends StatelessWidget {
                   'HaggleX',
                   style: CustomTheme.headline4,
                 ),
-                Row(
+                Stack(
+                  alignment: Alignment.topRight,
                   children: [
-                    Image.asset(
-                      'assets/images/notif.png',
-                      height: 40,
-                    ),
                     Container(
-                      margin: const EdgeInsets.only(bottom: 35),
+                      margin: const EdgeInsets.only(bottom: 45),
                       padding: const EdgeInsets.all(3.5),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -71,6 +68,10 @@ class TopWidget extends StatelessWidget {
                         '5',
                         style: CustomTheme.label,
                       ),
+                    ),
+                    Image.asset(
+                      'assets/images/notif.png',
+                      height: 40,
                     ),
                   ],
                 )
@@ -122,45 +123,53 @@ class BottomWidget extends StatelessWidget {
           ),
           Height(2.5.h),
           DashboardTile(
+            image: 'assets/images/hagglex.png',
             title: 'Haggle (HAG)',
             subtitle: 'NGN 380',
             trailing: 'assets/images/chart.png',
           ),
           DashboardTile(
+            image: 'assets/images/btc_ic.png',
             title: 'Bitcoin (BTC)',
             subtitle: 'NGN 4,272,147.00',
             subtitle2: '+2.34%',
             trailing: 'assets/images/chart1.png',
           ),
           DashboardTile(
+            image: 'assets/images/eth.png',
             title: 'Ethereum (ETH)',
             subtitle: 'NGN 4,272,147.00',
             subtitle2: '+2.34%',
             trailing: 'assets/images/chart2.png',
           ),
           DashboardTile(
+            image: 'assets/images/usdt.png',
             title: 'Tether (USDT)',
             subtitle: 'NGN 4,272,147.00',
             trailing: 'assets/images/chart.png',
           ),
           DashboardTile(
+            image: 'assets/images/bch.png',
             title: 'Bitcoin Cash (BCH)',
             subtitle: 'NGN 4,272,147.00',
             subtitle2: '+2.34%',
             trailing: 'assets/images/chart1.png',
           ),
           DashboardTile(
+            image: 'assets/images/dash.png',
             title: 'Dash (DASH)',
             subtitle: 'NGN 4,272,147.00',
             subtitle2: '+2.34%',
             trailing: 'assets/images/chart2.png',
           ),
           DashboardTile(
+            image: 'assets/images/doge.png',
             title: 'Dodgecoin (DOGE)',
             subtitle: 'NGN 4,272,147.00',
             trailing: 'assets/images/chart.png',
           ),
           DashboardTile(
+            image: 'assets/images/litecoin.png',
             title: 'Litecoin (LTC)',
             subtitle: 'NGN 4,272,147.00',
             subtitle2: '+2.34%',
@@ -304,7 +313,10 @@ class CustomListTile extends StatelessWidget {
             subtitle,
             style: CustomTheme.subtitlelight,
           ),
-          leading: Image.asset(leading),
+          leading: Image.asset(
+            leading,
+            scale: 3,
+          ),
         ),
       ),
     );
@@ -312,14 +324,15 @@ class CustomListTile extends StatelessWidget {
 }
 
 class DashboardTile extends StatelessWidget {
-  final String title, subtitle, trailing, subtitle2;
+  final String title, subtitle, trailing, subtitle2, image;
 
   const DashboardTile(
       {Key key,
       @required this.title,
       @required this.subtitle,
       @required this.trailing,
-      this.subtitle2})
+      this.subtitle2,
+      this.image})
       : super(key: key);
 
   @override
@@ -333,7 +346,10 @@ class DashboardTile extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Image.asset('assets/images/hagglex.png'),
+                  Image.asset(
+                    image,
+                    height: 40,
+                  ),
                   Width(2.0.h),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

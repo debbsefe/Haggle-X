@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
+
   flutter_secure_storage: ^3.3.5
   get: ^3.25.4
   graphql_flutter: ^4.0.1
@@ -35,6 +36,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.8.1
+
+flutter_icons:
+  android: "ic_launcher"
+  ios: false
+  image_path: "assets/images/hagglex.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

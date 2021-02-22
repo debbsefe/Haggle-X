@@ -55,7 +55,7 @@ class ReceiveMoney extends StatelessWidget {
                               children: [
                                 Image.asset(
                                   imageValue,
-                                  scale: 3.0,
+                                  height: 30,
                                 ),
                                 Width(1.5.h),
                                 Text(
@@ -248,33 +248,33 @@ class ReceiveMoney extends StatelessWidget {
                     value: 'BTC',
                   ),
                   ModalTile(
-                    image: 'assets/images/btc_ic.png',
+                    image: 'assets/images/eth.png',
                     title: 'Ethereum (ETH)',
                     value: 'ETH',
                   ),
                   ModalTile(
-                    image: 'assets/images/btc_ic.png',
+                    image: 'assets/images/usdt.png',
                     title: 'Tether (USDT)',
                     value: 'USDT',
                     others: ['ER20', 'OMNI'],
                   ),
                   ModalTile(
-                    image: 'assets/images/btc_ic.png',
+                    image: 'assets/images/bch.png',
                     title: 'Bitcoin Cash (BCH)',
                     value: 'BCH',
                   ),
                   ModalTile(
-                    image: 'assets/images/btc_ic.png',
+                    image: 'assets/images/dash.png',
                     title: 'Dash (DASH)',
                     value: 'DASH',
                   ),
                   ModalTile(
-                    image: 'assets/images/btc_ic.png',
+                    image: 'assets/images/doge.png',
                     title: 'Dodecoin (DOGE)',
                     value: 'DOGE',
                   ),
                   ModalTile(
-                    image: 'assets/images/btc_ic.png',
+                    image: 'assets/images/litecoin.png',
                     title: 'Litecoin (LTC)',
                     value: 'LTC',
                   ),
@@ -298,7 +298,10 @@ class ModalTile extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8.0),
       child: ListTile(
-          leading: Image.asset(image),
+          leading: Image.asset(
+            image,
+            height: 40,
+          ),
           title: Text(
             title,
             style: CustomTheme.title,
