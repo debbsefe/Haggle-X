@@ -1,16 +1,19 @@
-# haggle_x
+# HAGGLEX
 
-A new Flutter project.
+This is an implementation of hagglex mobile app with flutter. HaggleX is a Blockchain and Crypto Startup that provides an easy and trust-less platform for users to make payments and access, acquire and exchange digital assets..
 
-## Getting Started
+## APP SCREENSHOTS
 
-This project is a starting point for a Flutter application.
+![first screenshot](https://github.com/debbsefe/SpaceXChallenge/blob/media/1.jpeg?raw=true)
 
-A few resources to get you started if this is your first Flutter project:
+![second screenshot](https://github.com/debbsefe/SpaceXChallenge/blob/media/2.jpeg?raw=true)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![third screenshot](https://github.com/debbsefe/SpaceXChallenge/blob/media/3.jpeg?raw=true)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![fourth screenshot](https://github.com/debbsefe/SpaceXChallenge/blob/media/4.jpeg?raw=true)
+
+![fifth screenshot](https://github.com/debbsefe/SpaceXChallenge/blob/media/5.jpeg?raw=true)
+
+## DOWNLOAD
+
+You can download the apk release here => https://github.com/debbsefe/SpaceXChallenge/releases/download/v1.0-beta/app-release.apk and install on your android device

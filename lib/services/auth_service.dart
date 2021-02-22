@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:haggle_x/queries/queries.dart';
@@ -44,9 +42,7 @@ abstract class AuthService extends ChangeNotifier {
       }
       Map<String, dynamic> response = result.data;
       return {"success": true, "data": response};
-    } on SocketException {
-      _error = 'No Internet Connection';
-      notifyListeners();
+    } catch (e) {
       return {"success": false, "data": null};
     }
   }
@@ -69,9 +65,7 @@ abstract class AuthService extends ChangeNotifier {
       }
       Map<String, dynamic> response = result.data;
       return {"success": true, "data": response};
-    } on SocketException {
-      _error = 'No Internet Connection';
-      notifyListeners();
+    } catch (e) {
       return {"success": false, "data": null};
     }
   }
