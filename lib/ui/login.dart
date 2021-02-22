@@ -82,7 +82,7 @@ class Login extends StatelessWidget {
                                 password: _password.text,
                               );
                               if (result['success']) {
-                                Get.to(() => DashboardTab());
+                                Get.off(() => DashboardTab());
                               } else {
                                 dialogBox(_provider.error, context);
                               }

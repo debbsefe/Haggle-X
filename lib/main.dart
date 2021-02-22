@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:haggle_x/services/main_service.dart';
 import 'package:haggle_x/theme.dart';
-import 'package:haggle_x/ui/dashboard_tab.dart';
 import 'package:haggle_x/ui/login.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
