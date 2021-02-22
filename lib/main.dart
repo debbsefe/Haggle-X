@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: CustomTheme.purple,
               fontFamily: 'BasisGrotesquePro'),
           debugShowCheckedModeBanner: false,
-          home: DashboardTab(),
+          home: Login(),
         );
       });
     });
